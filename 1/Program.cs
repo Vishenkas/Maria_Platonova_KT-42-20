@@ -1,20 +1,27 @@
 using NLog;
 using NLog.Web;
 
+using Microsoft.EntityFrameworkCore;
+using _1.Database;
+
 var builder = WebApplication.CreateBuilder(args);
-
 var logger = LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
-
 // Add services to the container.
 try
 {
     builder.Logging.ClearProviders();
     builder.Host.UseNLog();
-     
+
     builder.Services.AddControllers();
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
+
+    builder.Services.AddDbContext<PrepodDbcontext>(options =>
+       options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
+
 
     var app = builder.Build();
 
@@ -30,7 +37,6 @@ try
     app.MapControllers();
 
     app.Run();
-
 }
 catch (Exception ex)
 {
@@ -40,4 +46,3 @@ finally
 {
     LogManager.Shutdown();
 }
-
