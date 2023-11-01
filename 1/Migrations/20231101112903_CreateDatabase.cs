@@ -24,6 +24,19 @@ namespace _1.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "cd_stepen",
+                columns: table => new
+                {
+                    stepen_id = table.Column<int>(type: "int", nullable: false, comment: "Идентификатор записи кафедры")
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    c_stepen_name = table.Column<string>(type: "nvarchar(Max)", maxLength: 100, nullable: false, comment: "Название кафедры")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("pk_cd_stepen_stepen_id", x => x.stepen_id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "cd_prepod",
                 columns: table => new
                 {
@@ -56,6 +69,9 @@ namespace _1.Migrations
         {
             migrationBuilder.DropTable(
                 name: "cd_prepod");
+
+            migrationBuilder.DropTable(
+                name: "cd_stepen");
 
             migrationBuilder.DropTable(
                 name: "cd_kafedra");

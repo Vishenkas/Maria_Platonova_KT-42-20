@@ -11,7 +11,7 @@ using _1.Database;
 namespace _1.Migrations
 {
     [DbContext(typeof(PrepodDbcontext))]
-    [Migration("20231031131144_CreateDatabase")]
+    [Migration("20231101112903_CreateDatabase")]
     partial class CreateDatabase
     {
         /// <inheritdoc />
@@ -89,6 +89,29 @@ namespace _1.Migrations
                     b.HasIndex(new[] { "KafedraId" }, "idx_cd_prepod_fk_f_kafedra_id");
 
                     b.ToTable("cd_prepod", (string)null);
+                });
+
+            modelBuilder.Entity("_1.Models.Stepen", b =>
+                {
+                    b.Property<int>("StepenId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("stepen_id")
+                        .HasComment("Идентификатор записи кафедры");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StepenId"));
+
+                    b.Property<string>("StepenName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(Max)")
+                        .HasColumnName("c_stepen_name")
+                        .HasComment("Название кафедры");
+
+                    b.HasKey("StepenId")
+                        .HasName("pk_cd_stepen_stepen_id");
+
+                    b.ToTable("cd_stepen", (string)null);
                 });
 
             modelBuilder.Entity("_1.Models.Prepod", b =>
