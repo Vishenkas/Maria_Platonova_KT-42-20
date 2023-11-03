@@ -52,13 +52,13 @@ namespace _1.Migrations
                 {
                     table.PrimaryKey("pk_cd_prepod_prepod_id", x => x.prepod_id);
                     table.ForeignKey(
-                        name: "fk_f_kafedra_id",
+                        name: "fk_c_kafedra_id",
                         column: x => x.kafedra_id,
                         principalTable: "cd_kafedra",
                         principalColumn: "kafedra_id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "fk_f_stepen_id",
+                        name: "fk_c_stepen_id",
                         column: x => x.stepen_id,
                         principalTable: "cd_stepen",
                         principalColumn: "stepen_id",
@@ -66,12 +66,12 @@ namespace _1.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "idx_cd_prepod_fk_f_kafedra_id",
+                name: "idx_cd_prepod_fk_c_kafedra_id",
                 table: "cd_prepod",
                 column: "kafedra_id");
 
             migrationBuilder.CreateIndex(
-                name: "idx_cd_prepod_fk_f_stepen_id",
+                name: "idx_cd_prepod_fk_c_stepen_id",
                 table: "cd_prepod",
                 column: "stepen_id");
         }

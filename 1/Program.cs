@@ -1,16 +1,19 @@
 using NLog;
 using NLog.Web;
-
 using Microsoft.EntityFrameworkCore;
 using _1.Database;
+using _1.ServiceInterfaces;
+using Microsoft.AspNetCore.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
+
 var logger = LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
-// Add services to the container.
+
 try
 {
     builder.Logging.ClearProviders();
     builder.Host.UseNLog();
+    // Add services to the container.
 
     builder.Services.AddControllers();
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -18,10 +21,9 @@ try
     builder.Services.AddSwaggerGen();
 
     builder.Services.AddDbContext<PrepodDbcontext>(options =>
-       options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-
-
+    builder.Services.AddServices();
 
     var app = builder.Build();
 
@@ -32,6 +34,8 @@ try
         app.UseSwaggerUI();
     }
 
+   // app.UseMiddleware<ExceptionHandlerMiddleware>();
+
     app.UseAuthorization();
 
     app.MapControllers();
@@ -40,7 +44,7 @@ try
 }
 catch (Exception ex)
 {
-    logger.Error(ex, "Stopped program because of excetion");
+    logger.Error(ex, "Stopped program because of exception");
 }
 finally
 {

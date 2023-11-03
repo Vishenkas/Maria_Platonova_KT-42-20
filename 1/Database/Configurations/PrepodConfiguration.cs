@@ -49,7 +49,7 @@ namespace _1.Database.Configurations
                 .HasOne(p => p.Kafedra)
                 .WithMany()
                 .HasForeignKey(p => p.KafedraId)
-                .HasConstraintName("fk_f_kafedra_id")
+                .HasConstraintName("fk_c_kafedra_id")
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder.Property(p => p.StepenId)
@@ -60,14 +60,14 @@ namespace _1.Database.Configurations
                 .HasOne(p => p.Stepen)
                 .WithMany()
                 .HasForeignKey(p => p.StepenId)
-                .HasConstraintName("fk_f_stepen_id")
+                .HasConstraintName("fk_c_stepen_id")
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder.ToTable(TableName)
-                .HasIndex(p => p.KafedraId, $"idx_{TableName}_fk_f_kafedra_id");
+                .HasIndex(p => p.KafedraId, $"idx_{TableName}_fk_c_kafedra_id");
 
             builder.ToTable(TableName)
-                .HasIndex(p => p.StepenId, $"idx_{TableName}_fk_f_stepen_id");
+                .HasIndex(p => p.StepenId, $"idx_{TableName}_fk_c_stepen_id");
 
         }
 
