@@ -8,10 +8,10 @@ namespace _1.Database
     public class PrepodDbcontext : DbContext
     {
         //Добавляем таблицы
-        DbSet<Kafedra> Kafedra { get; set; }
+        public DbSet<Kafedra> Kafedra { get; set; }
 
-        DbSet<Stepen> Stepen { get; set; }
-        DbSet<Prepod> Prepod { get; set; }
+        public DbSet<Stepen> Stepen { get; set; }
+        public DbSet<Prepod> Prepod { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

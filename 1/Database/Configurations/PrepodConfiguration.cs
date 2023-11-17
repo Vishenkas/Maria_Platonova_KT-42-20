@@ -42,7 +42,8 @@ namespace _1.Database.Configurations
 
             builder.Property(p => p.KafedraId)
                 .HasColumnName("kafedra_id")
-                .HasComment("Индетификатор кафедры");
+                .HasComment("Индетификатор кафедры")
+                .HasColumnType(ColumnType.Int);
 
 
             builder.ToTable(TableName)
@@ -54,7 +55,8 @@ namespace _1.Database.Configurations
 
             builder.Property(p => p.StepenId)
                 .HasColumnName("stepen_id")
-                .HasComment("Индетификатор степени");
+                .HasComment("Индетификатор степени")
+                .HasColumnType(ColumnType.Int);
 
             builder.ToTable(TableName)
                 .HasOne(p => p.Stepen)
@@ -69,6 +71,11 @@ namespace _1.Database.Configurations
             builder.ToTable(TableName)
                 .HasIndex(p => p.StepenId, $"idx_{TableName}_fk_c_stepen_id");
 
+            builder.Navigation(p => p.Kafedra)
+                .AutoInclude();
+
+            builder.Navigation(p => p.Stepen)
+                .AutoInclude();
         }
 
     }

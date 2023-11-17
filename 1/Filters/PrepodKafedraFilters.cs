@@ -1,4 +1,4 @@
-﻿namespace _1.Filters.PrepodFilters
+﻿namespace _1.Filters.PrepodKafedraFilters
 {
     public class PrepodKafedraFilter
     {

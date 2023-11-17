@@ -23,14 +23,14 @@ namespace _1.Database.Configurations
             //Расписываем как будут называться колонки в БД, а так же их обязательность и тд
             builder.Property(p => p.StepenId)
                 .HasColumnName("stepen_id")
-                .HasComment("Идентификатор записи кафедры");
+                .HasComment("Идентификатор ученой степени");
 
             //HasComment добавит комментарий, который будет отображаться в СУБД (добавлять по желанию)
             builder.Property(p => p.StepenName)
                 .IsRequired()
                 .HasColumnName("c_stepen_name")
                 .HasColumnType(ColumnType.String).HasMaxLength(100)
-                .HasComment("Название кафедры");
+                .HasComment("Название ученой степени");
 
             builder.ToTable(TableName);
         }
