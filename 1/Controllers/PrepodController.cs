@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using _1.Filters.PrepodKafedraFilters;
-using _1.Interfaces;
+using _1.Interfaces.PrepodInterfaces;
 using _1.Database;
 using _1.Models;
 

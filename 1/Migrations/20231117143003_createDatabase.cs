@@ -5,7 +5,7 @@
 namespace _1.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateDatabase : Migration
+    public partial class createDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -27,9 +27,9 @@ namespace _1.Migrations
                 name: "cd_stepen",
                 columns: table => new
                 {
-                    stepen_id = table.Column<int>(type: "int", nullable: false, comment: "Идентификатор записи кафедры")
+                    stepen_id = table.Column<int>(type: "int", nullable: false, comment: "Идентификатор ученой степени")
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    c_stepen_name = table.Column<string>(type: "nvarchar(Max)", maxLength: 100, nullable: false, comment: "Название кафедры")
+                    c_stepen_name = table.Column<string>(type: "nvarchar(Max)", maxLength: 100, nullable: false, comment: "Название ученой степени")
                 },
                 constraints: table =>
                 {
@@ -45,6 +45,7 @@ namespace _1.Migrations
                     c_prepod_firstname = table.Column<string>(type: "nvarchar(Max)", maxLength: 100, nullable: false, comment: "Имя преподавателя"),
                     c_prepod_lastname = table.Column<string>(type: "nvarchar(Max)", maxLength: 100, nullable: false, comment: "Фамилия преподавателя"),
                     c_prepod_middlename = table.Column<string>(type: "nvarchar(Max)", maxLength: 100, nullable: false, comment: "Отчество преподавателя"),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     kafedra_id = table.Column<int>(type: "int", nullable: false, comment: "Индетификатор кафедры"),
                     stepen_id = table.Column<int>(type: "int", nullable: false, comment: "Индетификатор степени")
                 },

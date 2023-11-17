@@ -4,7 +4,7 @@ using _1.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
-namespace _1.Interfaces
+namespace _1.Interfaces.StepenInterfaces
 {
     public interface IStepenService
     {

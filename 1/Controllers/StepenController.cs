@@ -4,7 +4,7 @@ using _1.Filters.PrepodStepenFilters;
 using _1.Database;
 using Microsoft.EntityFrameworkCore;
 using _1.Models;
-using _1.Interfaces;
+using _1.Interfaces.StepenInterfaces;
 using NLog.Filters;
 using System.Threading;
 

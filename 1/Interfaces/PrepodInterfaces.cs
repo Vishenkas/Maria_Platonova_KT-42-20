@@ -3,7 +3,7 @@ using _1.Models;
 using _1.Filters.PrepodKafedraFilters;
 using Microsoft.EntityFrameworkCore;
 
-namespace _1.Interfaces
+namespace _1.Interfaces.PrepodInterfaces
 {
     public interface IPrepodService
     {

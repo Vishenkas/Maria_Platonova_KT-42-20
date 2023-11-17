@@ -11,8 +11,8 @@ using _1.Database;
 namespace _1.Migrations
 {
     [DbContext(typeof(PrepodDbcontext))]
-    [Migration("20231103130924_CreateDatabase")]
-    partial class CreateDatabase
+    [Migration("20231117143003_createDatabase")]
+    partial class createDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -83,6 +83,9 @@ namespace _1.Migrations
                         .HasColumnName("c_prepod_middlename")
                         .HasComment("Отчество преподавателя");
 
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("StepenId")
                         .HasColumnType("int")
                         .HasColumnName("stepen_id")
@@ -104,7 +107,7 @@ namespace _1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("stepen_id")
-                        .HasComment("Идентификатор записи кафедры");
+                        .HasComment("Идентификатор ученой степени");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StepenId"));
 
@@ -113,7 +116,7 @@ namespace _1.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(Max)")
                         .HasColumnName("c_stepen_name")
-                        .HasComment("Название кафедры");
+                        .HasComment("Название ученой степени");
 
                     b.HasKey("StepenId")
                         .HasName("pk_cd_stepen_stepen_id");
